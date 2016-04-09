@@ -12,3 +12,5 @@ Vous acceptez de utiliser ces sources qu'à titre experimental sur vos propres i
 - [ ] Créer une UI
 - [ ] A voir
 
+OpenSource Libraries used:
+-JCookies
