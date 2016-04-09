@@ -3,8 +3,8 @@ package core;
 import java.net.URLConnection;
 import java.util.Map;
 
-import sonalb.net.http.cookie.Client;
-import sonalb.net.http.cookie.CookieJar;
+import com.sonalb.net.http.cookie.Client;
+import com.sonalb.net.http.cookie.CookieJar;
 
 //va peut-etre etre remplace par un resultStatement de base avec des interfaces
 
@@ -22,7 +22,7 @@ public class resultStatement implements stageAttributes {
 		return null;
 	}
 
-	public CookieJar GetCookies() {
+	public CookieJar GetCookies() throws Exception {
 		if (!(boolean) stage.stageAttributes.get(stageAttr.saveCookie.name()))
 			throw new Exception("Cookie set to no capture! Invalid Stage ?");
 		Client client = new Client();

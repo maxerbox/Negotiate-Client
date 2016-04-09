@@ -11,7 +11,7 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class stageEngine implements httpType, stageAttributes {
+public class StageRequester implements httpType, stageAttributes {
 
 	public resultStatement request(stageBase stage) throws Exception {
 		stageBase _response = null;
