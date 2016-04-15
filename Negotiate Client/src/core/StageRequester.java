@@ -12,8 +12,40 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 public class StageRequester implements httpType, stageAttributes {
-
-	public resultStatement request(stageBase stage) throws Exception {
+ public enum RequesterAttr {
+	 UseProxy("useProxy",boolean.class),
+	 ProxyIp("ipProxy",String.class),
+	 ProxyPort("portProxy",Int.class),
+	 UseSocks("useSocks",boolean.class),
+	 SocksIp("ipSocks",String.class),
+	 SocksPort("portSocks",String.class);
+	 
+		private final String value;
+		private final Class<?> type;
+		RequesterAttr(String _value,Class<?> _type){
+			value=_value;
+			type=_type;
+			
+		}
+		Class<?> GetType() {
+			return type;
+		}
+		String toString(){
+			return value;
+		}
+ }
+	private Map<String,Object> engineAttr = null;
+	private stageBase stage = null;
+	public void SetStage(stageBase _stage) {
+		stage=_stage;
+	}
+	StageRequester(stageBase _stage) {
+		stage=_stage;
+	}
+	StageRequester(){}
+	public resultStatement request() throws Exception {
+		if(stage==null)
+			throw new Exception("Stage not set");
 		stageBase _response = null;
 		switch (stage.prt) {
 		case HTTP:
@@ -26,7 +58,7 @@ public class StageRequester implements httpType, stageAttributes {
 		// No default needed
 		}
 
-		return new resultStatement(stage);
+		return new resultStatement(_response);
 
 	}
 
